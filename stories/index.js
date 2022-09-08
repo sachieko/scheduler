@@ -36,7 +36,7 @@ storiesOf("DayListItem", module)
     <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} />
   ));
 
-  const days = [
+const days = [
     {
       id: 1,
       name: "Monday",
