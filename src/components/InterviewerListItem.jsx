@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'components/InterviewerListItem.scss'
 import classNames from 'classnames';
 // { id:int, name:str, avatar:url, selected:bool, setInterviewer:func }
