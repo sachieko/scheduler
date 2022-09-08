@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'components/InterviewerListItem.scss'
 import classNames from 'classnames';
 // { id:int, name:str, avatar:url, selected:bool, setInterviewer:func }
-const InterviewerListItem = (props) => {
+const InterviewerListItem = props => {
   const classes = classNames(
     'interviewers__item',
     { 
