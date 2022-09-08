@@ -9,7 +9,7 @@ const InterviewerList = props => {
       key={interviewer.id} 
       name={interviewer.name}
       avatar={interviewer.avatar}
-      setInterviewer={(event) => setCurrentInterviewer(interviewer.id)} 
+      onChange={(event) => setCurrentInterviewer(interviewer.id)} 
       selected={currentInterviewer === interviewer.id} />;
     });
 
