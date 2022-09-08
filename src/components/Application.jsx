@@ -34,7 +34,7 @@ const Application = props => {
 />
 <hr className="sidebar__separator sidebar--centered" />
 <nav className="sidebar__menu">
-  <DayList days={days} day={currentDay} setDay={setCurrentDay} />
+  <DayList days={days} value={currentDay} onChange={setCurrentDay} />
 </nav>
 <img
   className="sidebar__lhl sidebar--centered"
