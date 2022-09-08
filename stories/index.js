@@ -119,24 +119,24 @@ const interviewers = [
   { id: 5, name: 'Sven Jones', avatar: 'https://i.imgur.com/twYrpay.jpg' }
 ];
 
-storiesOf('InterviewerList', module)
+storiesOf("InterviewerList", module)
   .addParameters({
-    backgrounds: [{ name: 'dark', value: '#222f3e', default: true }]
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   })
-  .add('Initial', () => (
+  .add("Initial", () => (
     <InterviewerList
       interviewers={interviewers}
     />
   ))
-  .add('Selected', () => (
+  .add("Selected", () => (
     <InterviewerList
       interviewers={interviewers}
-      interviewer={3}
+      value={3}
     />
   ))
-  .add('Clickable', () => (
+  .add("Clickable", () => (
     <InterviewerList
       interviewers={interviewers}
-      onChange={action('setInterviewer')}
+      onChange={action("setInterviewer")}
     />
   ));

@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import InterviewerListItem from './InterviewerListItem';
 import 'components/InterviewerList.scss';
-// { interviewers:arr of [{ id:int, name:str, avatar:urlstr }], setInterviewer:func, interviewer:int }
+// { interviewers:arr of [{ id:int, name:str, avatar:urlstr }], setInterviewer:func, value:int }
 const InterviewerList = props => {
-  const [currentInterviewer, setCurrentInterviewer] = useState(props.interviewer);
   const interviewers = props.interviewers.map(interviewer => {
      return <InterviewerListItem 
       key={interviewer.id} 
       name={interviewer.name}
       avatar={interviewer.avatar}
-      onChange={(event) => setCurrentInterviewer(interviewer.id)} 
-      selected={currentInterviewer === interviewer.id} />;
+      onChange={(event) => props.onChange(interviewer.id)} 
+      selected={props.value === interviewer.id} />;
     });
 
   return (
