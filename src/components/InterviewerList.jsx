@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InterviewerListItem from './InterviewerListItem';
 import 'components/InterviewerList.scss';
-// { interviewers:arr of [{ id:int, name:str, avatar:urlstr }], setInterviewer:func, value:int }
+// { interviewers:arr of [{ id:int, name:str, avatar:urlstr }], onChange:func to set interviewer, value:int of interviewer }
 const InterviewerList = props => {
   const interviewers = props.interviewers.map(interviewer => {
      return <InterviewerListItem 
