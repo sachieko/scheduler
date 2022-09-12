@@ -12,4 +12,10 @@ const getAppointmentsForDay = (state, day) => {
   return appointments;
 };
 
-export default getAppointmentsForDay;
+exports.getAppointmentsForDay = getAppointmentsForDay;
+
+const getInterview = (state, interview) => {
+  return interview ? { interviewer: state.interviewers[interview.interviewer], student: interview.student } : null;
+};
+
+exports.getInterview = getInterview;
