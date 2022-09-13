@@ -1,37 +1,32 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import React from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment  from "./Appointment";
+import useApplicationData from "hooks/useApplicationData";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 
 const Application = props => {
-  const [state, setState] = useState({ 
-    days: [],
-    appointments: {},
-    interviewers: {},
-    currentDay: 'Monday'
-  });
+  const { 
+    state,
+    setDay,
+    bookInterview,
+    cancelInterview
+  } = useApplicationData();
 
-  useEffect(() => {
-    Promise.all([
-      axios.get('api/days'),
-      axios.get('api/appointments'),
-      axios.get('api/interviewers')
-    ])
-      .then(all => {
-        setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
-      });
-  }, []);
   const interviewers = getInterviewersForDay(state, state.currentDay);
 
   const dailyAppointments = getAppointmentsForDay(state, state.currentDay).map(app => {
     const interview = getInterview(state, app.interview);
     return (
-      <Appointment key={app.id} {...app} interview={interview} interviewers={interviewers} />
+      <Appointment key={app.id}
+       {...app}
+      interview={interview} 
+      interviewers={interviewers} 
+      bookInterview={bookInterview} 
+      cancelInterview={cancelInterview} />
     )
   });
-  dailyAppointments.push(<Appointment key="last" time="5pm" />);
+  dailyAppointments.push(<Appointment key="last" time="5pm" />); // No appointments starting at 5 pm, push for formatting purposes.
   return (
     <React.StrictMode>
     <main className="layout">
@@ -43,7 +38,7 @@ const Application = props => {
 />
 <hr className="sidebar__separator sidebar--centered" />
 <nav className="sidebar__menu">
-  <DayList days={state.days} value={state.currentDay} onChange={setState} />
+  <DayList days={state.days} value={state.currentDay} onChange={setDay} />
 </nav>
 <img
   className="sidebar__lhl sidebar--centered"

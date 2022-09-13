@@ -37,7 +37,9 @@ const Form = (props) => {
   <section className="appointment__card-right">
     <section className="appointment__actions">
       <Button danger={"true"} onClick={cancel}>Cancel</Button>
-      <Button confirm={"true"} onClick={props.onSave}>Save</Button>
+      <Button confirm={"true"} onClick={() => {
+        interviewer ? props.onSave(student, interviewer) : alert('You need to choose an interviewer');
+      }}>Save</Button>
     </section>
   </section>
 </main>
