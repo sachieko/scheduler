@@ -21,6 +21,24 @@ const useApplicationData = function() {
       });
   }, []);
 
+  const updateSpots = function(appointments) {
+    // get the current day's appointments
+    const dayObj = state.days.find(day =>  day.name === state.currentDay);
+    // Reduce the days appointments to a number of unfilled interviews
+    const spots = dayObj.appointments.reduce((accumulator, currentAppId) => {
+      if (!appointments[currentAppId].interview) { // If interview is null, we should count it as an open spot
+        accumulator += 1;
+      }
+      return accumulator;
+    }, 0);
+    const day = {
+      ...dayObj,
+      spots
+    };
+    const days = state.days.map(dayItem => dayItem.name === state.currentDay ? day : dayItem);
+    setState(prev => ({ ...prev, days: days }));
+  };
+
   const bookInterview = function(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -31,8 +49,9 @@ const useApplicationData = function() {
       [id]: appointment
     };
     return axios.put(`api/appointments/${id}`, { interview: appointment.interview })
-      .then(res => {
-        setState(prev => ({ ...prev, appointments }))
+      .then(() => {
+        setState(prev => ({ ...prev, appointments }));
+        updateSpots(appointments);
       });
   };
 
@@ -47,7 +66,8 @@ const useApplicationData = function() {
     };
     return axios.delete(`api/appointments/${id}`)
       .then(res => {
-      setState(prev => ({ ...prev, appointments }))
+      setState(prev => ({ ...prev, appointments }));
+      updateSpots(appointments);
       });
   };
 
