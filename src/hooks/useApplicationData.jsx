@@ -21,7 +21,7 @@ const useApplicationData = function() {
       });
   }, []);
 
-  const updateSpots = function(appointments) {
+  const updateSpots = function(state, appointments) {
     // get the current day's appointments
     const dayObj = state.days.find(day =>  day.name === state.currentDay);
     // Reduce the days appointments to a number of unfilled interviews
@@ -51,7 +51,7 @@ const useApplicationData = function() {
     return axios.put(`api/appointments/${id}`, { interview: appointment.interview })
       .then(() => {
         setState(prev => ({ ...prev, appointments }));
-        updateSpots(appointments);
+        updateSpots(state, appointments);
       });
   };
 
@@ -67,7 +67,7 @@ const useApplicationData = function() {
     return axios.delete(`api/appointments/${id}`)
       .then(res => {
       setState(prev => ({ ...prev, appointments }));
-      updateSpots(appointments);
+      updateSpots(state, appointments);
       });
   };
 
