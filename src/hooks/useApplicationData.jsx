@@ -24,12 +24,9 @@ const useApplicationData = function() {
   const updateSpots = function(state, appointments) {
     // get the current day's appointments
     const dayObj = state.days.find(day =>  day.name === state.currentDay);
-    // Reduce the days appointments to a number of unfilled interviews
-    const spots = dayObj.appointments.reduce((accumulator, currentAppId) => {
-      if (!appointments[currentAppId].interview) { // If interview is null, we should count it as an open spot
-        accumulator += 1;
-      }
-      return accumulator;
+    // Reduce the days appointments to a number that counts null interviews
+    const spots = dayObj.appointments.reduce((counter, currentAppId) => {
+      return appointments[currentAppId].interview ? counter : counter += 1; // only increase count if the interview is null
     }, 0);
     const day = {
       ...dayObj,
