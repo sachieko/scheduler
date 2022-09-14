@@ -36,7 +36,7 @@ const useApplicationData = function() {
       spots
     };
     const days = state.days.map(dayItem => dayItem.name === state.currentDay ? day : dayItem);
-    setState(prev => ({ ...prev, days: days }));
+    return days;
   };
 
   const bookInterview = function(id, interview) {
@@ -50,8 +50,7 @@ const useApplicationData = function() {
     };
     return axios.put(`api/appointments/${id}`, { interview: appointment.interview })
       .then(() => {
-        setState(prev => ({ ...prev, appointments }));
-        updateSpots(state, appointments);
+        setState(prev => ({ ...prev, appointments, days: updateSpots(prev, appointments) }));
       });
   };
 
@@ -66,8 +65,7 @@ const useApplicationData = function() {
     };
     return axios.delete(`api/appointments/${id}`)
       .then(res => {
-      setState(prev => ({ ...prev, appointments }));
-      updateSpots(state, appointments);
+        setState(prev => ({ ...prev, appointments, days: updateSpots(prev, appointments) }));
       });
   };
 
