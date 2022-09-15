@@ -1,3 +1,5 @@
+// Return array of the appointment objects using the appointment array 
+// Refactor with map/filter/reduce functions later! This is a lot of wasteful code!
 const getAppointmentsForDay = (state, day) => {
   let appointmentArray = [];
   for (const stateDay of state.days) { // days is an array of objects
@@ -13,7 +15,7 @@ const getAppointmentsForDay = (state, day) => {
 };
 
 exports.getAppointmentsForDay = getAppointmentsForDay;
-
+// Return interviewers information for that day as an array
 const getInterviewersForDay = (state, day) => {
   let interviewersArray = [];
   for (const stateDay of state.days) {
@@ -30,6 +32,7 @@ const getInterviewersForDay = (state, day) => {
 
 exports.getInterviewersForDay = getInterviewersForDay;
 
+// Return interview object or null if it doesn't exist
 const getInterview = (state, interview) => {
   return interview ? { interviewer: state.interviewers[interview.interviewer], student: interview.student } : null;
 };
