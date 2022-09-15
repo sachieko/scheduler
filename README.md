@@ -1,8 +1,22 @@
 # Interview Scheduler
 
+An SPA that allows users to schedule and keep track of appointments.
+
 ## Setup
 
 Install dependencies with `npm install`.
+
+Dependencies include:
+* An older version of react(16.9.0) (Can `npm run build` to deploy it)
+* axios
+* react-scripts
+* classnames
+
+Dev Dependencies:
+* Storybook
+* Jest
+* @testing-library/react
+* Cypress once those tests work :)
 
 ## Running Webpack Development Server
 
@@ -34,3 +48,5 @@ npm run storybook
 ![main view2](https://imgur.com/1jJ1MnX)
 ![Editing or creating appointments](https://imgur.com/l6uOBit)
 ![Delete confirmation](https://imgur.com/cfV6LMJ)
+
+Made by [Sachieko](https://github.com/sachieko)
