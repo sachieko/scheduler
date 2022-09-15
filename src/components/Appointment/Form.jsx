@@ -40,7 +40,10 @@ const Form = (props) => {
         type='text'
         value={student}
         placeholder={student || 'Enter Student Name'}
-        onChange={(event) => setStudent(event.target.value)}
+        onChange={(event) => {
+          setStudent(event.target.value);
+          setError('');
+        }}
       />
     </form>
     {error && (<section className="appointment__validation">{error}</section>)}
