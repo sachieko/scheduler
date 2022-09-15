@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, waitForElement, fireEvent, queryByText, findAllByRole,
+import { render, cleanup, waitForElement, fireEvent, queryByText,
    getAllByRole, getByAltText, getByPlaceholderText, getByText, findByText, findAllByText } from '@testing-library/react';
 import Application from 'components/Application';
 
@@ -16,7 +16,7 @@ describe('Application tests', () => {
     expect(getByText("Cohana Roy")).toBeInTheDocument();
   });
   it('loads data, books an interview, and reduces the spots remaining for the first day by 1 to 0', async () => {
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
 
     await waitForElement(() => container);
 
