@@ -42,6 +42,7 @@ npm run storybook
 * Not yet implemented: Implement web socket so these updates happen for all users
 * Users can create appointments, edit them, or delete them, with confirmation on destructive actions
 * Communicates with a postgreSQL server API,  which is independent. You can find instructions to run your own [here](https://github.com/lighthouse-labs/scheduler-api)
+* Has a thorough testing library with Jest.
 
 ## Screenshots
 ![main view](https://imgur.com/GaH4aLf)
