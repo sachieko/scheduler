@@ -50,7 +50,10 @@ const Form = (props) => {
     <InterviewerList 
       interviewers={props.interviewers}
       value={interviewer}
-      onChange={setInterviewer}
+      onChange={(id) => {
+        setInterviewer(id);
+        setError('');
+      }}
     />
   </section>
   <section className='appointment__card-right'>
