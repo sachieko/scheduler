@@ -23,9 +23,10 @@ const Form = (props) => {
       return;
     }
     if (!interviewer) {
-      setError('Interviewer must be selected');
+      setError('Please select an interviewer');
       return;
     }
+    setError('');
     props.onSave(student, interviewer);
   }
 
@@ -42,6 +43,7 @@ const Form = (props) => {
         onChange={(event) => setStudent(event.target.value)}
       />
     </form>
+    {error && (<section className="appointment__validation">{error}</section>)}
     <InterviewerList 
       interviewers={props.interviewers}
       value={interviewer}
