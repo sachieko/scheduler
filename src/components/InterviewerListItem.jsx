@@ -11,7 +11,7 @@ const InterviewerListItem = props => {
   return (
     <li onClick={props.onChange} className={classes}>
       <img
-        className="interviewers__item-image"
+        className='interviewers__item-image'
         src={props.avatar}
         alt={props.name}
       />

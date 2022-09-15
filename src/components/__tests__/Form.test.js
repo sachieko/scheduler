@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, prettyDOM } from '@testing-library/react';
+import { render, cleanup, fireEvent, prettyDOM } from '@testing-library/react';
 
 import Form from 'components/Appointment/Form';
 
@@ -26,7 +26,41 @@ describe('Appointment Form Component', () => {
     const testSelector = getByRole("textbox");
     expect(testSelector).toHaveValue('Sachieko Test');
   });
-
-
+  it("validates that the student name is not blank", () => {
+    const onSave = jest.fn();
+    const { getByText } = render(<Form interviewers={interviewers} interviewer={interviewers[1]} student={''} onSave={onSave} />);
+    fireEvent.click(getByText("Save"));
+    /* 1. validation is shown */
+    expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
+  
+    /* 2. onSave is not called */
+    expect(onSave).not.toHaveBeenCalled();
+  });
+  
+  it("validates that the interviewer cannot be null", () => {
+    const onSave = jest.fn();
+    const { getByText } = render(<Form interviewers={interviewers} student={'Sachieko Test'} onSave={onSave} />);
+    fireEvent.click(getByText("Save"));
+    /* 3. validation is shown */
+    expect(getByText(/please select an interviewer/i)).toBeInTheDocument();
+  
+    /* 4. onSave is not called */
+    expect(onSave).not.toHaveBeenCalled();
+  });
+  
+  it("calls onSave function when the name and interviewer is defined", () => {
+    const onSave = jest.fn();
+    const { getByText, queryByText } = render(<Form interviewers={interviewers} interviewer={interviewers[1].id} student={'Sachieko Test'} onSave={onSave} />);
+    fireEvent.click(getByText("Save"));
+    /* 5. validation is not shown */
+    expect(queryByText(/student name cannot be blank/i)).toBeNull();
+    expect(queryByText(/please select an interviewer/i)).toBeNull();
+  
+    /* 6. onSave is called once*/
+    expect(onSave).toHaveBeenCalledTimes(1);
+  
+    /* 7. onSave is called with the correct arguments */
+    expect(onSave).toHaveBeenCalledWith("Sachieko Test", interviewers[1].id);
+  });
 });
 
