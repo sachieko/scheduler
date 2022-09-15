@@ -45,9 +45,9 @@ npm run storybook
 * Has a thorough testing library with Jest.
 
 ## Screenshots
-![main view](https://imgur.com/GaH4aLf)
-![main view2](https://imgur.com/1jJ1MnX)
-![Editing or creating appointments](https://imgur.com/l6uOBit)
-![Delete confirmation](https://imgur.com/cfV6LMJ)
+![main](https://i.imgur.com/GaH4aLf.png)
+![main view2](https://i.imgur.com/1jJ1MnX.png)
+![Editing or creating appointments](https://i.imgur.com/l6uOBit.png)
+![Delete confirmation](https://i.imgur.com/cfV6LMJ.png)
 
 Made by [Sachieko](https://github.com/sachieko)
