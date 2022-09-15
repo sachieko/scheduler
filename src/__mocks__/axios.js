@@ -25,7 +25,7 @@ const fixtures = {
     "3": {
       id: 3,
       time: "2pm",
-      interview: { student: "Leopold Silvers", interviewer: 4 }
+      interview: { student: "Sachieko Test", interviewer: 4 }
     },
     "4": { id: 4, time: "3pm", interview: null }
   },
@@ -51,4 +51,21 @@ const fixtures = {
       avatar: "https://i.imgur.com/FK8V841.jpg"
     }
   }
+};
+
+export default {
+  defaults: { baseURL: ""},
+  get: jest.fn(url => {
+    const urls = {
+      '/api/days': fixtures.days,
+      '/api/appointments': fixtures.appointments,
+      '/api/interviewers': fixtures.interviewers
+    };
+
+    return Promise.resolve({
+      status: 200,
+      statusText: "OK",
+      data: urls[url]
+    });
+  })
 };

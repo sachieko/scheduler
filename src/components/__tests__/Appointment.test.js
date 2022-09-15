@@ -19,9 +19,6 @@ const interview = {
 };
 
 describe('Appointment Component', () => {
-  it('renders without crashing', () => {
-    render(<Appointment />);
-  });
   it('shows empty if there are no interviews', () => {
     const { getByRole } = render(<Appointment time='1pm' />);
     expect(getByRole('img')).toHaveClass('appointment__add-button');
