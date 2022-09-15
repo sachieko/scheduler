@@ -67,5 +67,23 @@ export default {
       statusText: "OK",
       data: urls[url]
     });
+  }),
+  put: jest.fn(url => {
+    const urls = {
+      '/api/appointments': fixtures.appointments
+    };
+    return Promise.resolve({
+      status: 204,
+      statusText: "No Content"
+    })
+  }),
+  delete: jest.fn(url => {
+    const urls = {
+      '/api/appointments': fixtures.appointments
+    };
+    return Promise.resolve({
+      status: 204,
+      statusText: "No Content"
+    })
   })
 };
