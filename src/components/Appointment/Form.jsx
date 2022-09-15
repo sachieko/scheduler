@@ -24,6 +24,7 @@ const Form = (props) => {
         className="appointment__create-input text--semi-bold"
         name="name"
         type="text"
+        value={student}
         placeholder={student || "Enter Student Name"}
         onChange={(event) => setStudent(event.target.value)}
       />
