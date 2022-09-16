@@ -17,7 +17,7 @@ export default function DayListItem(props) {
   };
 
   return (
-    <li className={dayClass} onClick={() => props.onChange(props.name)}>
+    <li className={dayClass} onClick={() => props.onChange(props.name)} data-cy={'day'}>
       <h2 className='text--regular'>{props.name}</h2> 
       <Spots spots={props.spots} />
       
