@@ -11,7 +11,7 @@ const DayList = props => {
     return <DayListItem key={index} name={day.name} spots={day.spots} selected={day.name === props.value} onChange={props.onChange} /> 
   });
   return (
-  <ul data-cy='dayList'>
+  <ul data-testid='dayList'>
     {dayComponents}
   </ul>
   );

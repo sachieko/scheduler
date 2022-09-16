@@ -17,14 +17,14 @@ const Show = (props) => {
           src='images/edit.png'
           alt='Edit'
           onClick={props.onEdit}
-          data-cy='edit'
+          data-testid='editButton'
         />
         <img
           className='appointment__actions-button'
           src='images/trash.png'
           alt='Delete'
           onClick={props.onDelete}
-          data-cy='delete'
+          data-testid='deleteButton'
         />
       </section>
     </section>

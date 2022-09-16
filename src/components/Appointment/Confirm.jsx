@@ -6,8 +6,8 @@ const Confirm = (props) => {
     <main className='appointment__card appointment__card--confirm'>
   <h1 className='text--semi-bold'>{props.message}</h1>
   <section className='appointment__actions'>
-    <Button onClick={props.onCancel} danger={'true'} data-cy={'cancelDelete'}>Cancel</Button>
-    <Button onClick={props.onConfirm} danger={'true'} data-cy={'confirmDelete'}>Confirm</Button>
+    <Button onClick={props.onCancel} danger={'true'} data-testid={'cancelDelete'}>Cancel</Button>
+    <Button onClick={props.onConfirm} danger={'true'} data-testid={'confirmDelete'}>Confirm</Button>
   </section>
 </main>
   )

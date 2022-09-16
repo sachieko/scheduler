@@ -8,7 +8,7 @@ const Empty = (props) => {
       src='images/add.png'
       alt='Add'
       onClick={props.onAdd}
-      data-cy='add'
+      data-testid='addButton'
     />
   </main>
   )

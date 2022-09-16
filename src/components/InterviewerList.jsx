@@ -15,7 +15,7 @@ const InterviewerList = props => {
     });
 
   return (
-    <section className='interviewers' data-cy='interviewerList'>
+    <section className='interviewers' data-testid='interviewerList'>
       <h4 className='interviewers__header text--light'>Interviewer</h4>
       <ul className='interviewers__list'>{interviewers}</ul>
     </section>
