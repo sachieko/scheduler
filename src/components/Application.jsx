@@ -46,7 +46,7 @@ const Application = props => {
   alt='Lighthouse Labs'
 />
       </section>
-      <section className='schedule'>
+      <section className='schedule' data-cy='schedule'>
       {dailyAppointments}
       </section>
     </main>

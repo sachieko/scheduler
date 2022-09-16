@@ -9,21 +9,20 @@ describe("Navigation", () => {
   });
   it('should navigate to Tuesday', () => {
     cy.visit('/');
-    cy.contains('li', 'Tuesday').click().should('have.css', 'background-color', 'rgb(242, 242, 242)');
+    cy.contains('[data-cy=day]', 'Tuesday').click().should('have.class', 'day-list__item--selected');
   });
   it("should nav to Tuesday, and see that day's schedule instead", () => {
     cy.visit("/")
-      .get('section.schedule')
+      .get('[data-cy=schedule]')
       .should('contain', 'Archie Cohen');
 
-    cy.contains('Tuesday')
+    cy.contains('[data-cy=day]', 'Tuesday')
       .click();
 
-    cy.get('section.schedule')
+    cy.get('[data-cy=schedule]')
       .should('not.contain', 'Archie Cohen');
 
-    cy.get('li.day-list__item--selected')
-      .should('have.css', 'background-color', 'rgb(242, 242, 242)')
+    cy.get('.day-list__item--selected')
       .should('contain', 'Tuesday');
   });
 });
