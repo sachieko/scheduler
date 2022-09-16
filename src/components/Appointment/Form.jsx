@@ -44,6 +44,7 @@ const Form = (props) => {
           setStudent(event.target.value);
           setError('');
         }}
+        data-cy='appInput'
       />
     </form>
     {error && (<section className="appointment__validation">{error}</section>)}
@@ -58,8 +59,8 @@ const Form = (props) => {
   </section>
   <section className='appointment__card-right'>
     <section className='appointment__actions'>
-      <Button danger={'true'} onClick={cancel}>Cancel</Button>
-      <Button confirm={'true'} onClick={validate}>Save</Button>
+      <Button danger={'true'} onClick={cancel} data-cy={'cancel'}>Cancel</Button>
+      <Button confirm={'true'} onClick={validate} data-cy={'save'}>Save</Button>
     </section>
   </section>
 </main>
