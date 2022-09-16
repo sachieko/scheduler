@@ -2,7 +2,7 @@ import React from 'react';
 
 const Show = (props) => {
   return (
-    <main className='appointment__card appointment__card--show' onClick={props.onEdit}>
+    <main className='appointment__card appointment__card--show'>
     <section className='appointment__card-left'>
       <h2 className='text--regular'>{props.student}</h2>
       <section className='interviewer'>
@@ -17,12 +17,14 @@ const Show = (props) => {
           src='images/edit.png'
           alt='Edit'
           onClick={props.onEdit}
+          data-cy='edit'
         />
         <img
           className='appointment__actions-button'
           src='images/trash.png'
           alt='Delete'
           onClick={props.onDelete}
+          data-cy='delete'
         />
       </section>
     </section>
